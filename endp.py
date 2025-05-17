@@ -58,7 +58,7 @@ def session():
         session_data = response.json()
         print("OpenAI response:", session_data)
 
-        return jsonify(session_data.get("client_secret")), 200
+        return jsonify(response.json().get("client_secret", {}).get("value", {})), 200
 
     except Exception as e:
         print("Exception in /session:", str(e))
